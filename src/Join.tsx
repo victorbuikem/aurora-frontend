@@ -53,6 +53,8 @@ const Join = () => {
       }
     } else {
       console.log("MetaMask is not installed.");
+      console.log("Meta");
+      
     }
     connectWallet();
     // web3Modal.clearCachedProvider();
