@@ -20,17 +20,22 @@ const providerOptions = {
 };
 
 const web3Modal = new Web3Modal({
-  network: "mainnet", // optional
+  //   network: "mainnet", // optional
   cacheProvider: true, // optional
   providerOptions, // required
 });
 
 async function connectWallet() {
   try {
-    web3Modal.clearCachedProvider();
+    // web3Modal.clearCachedProvider();
     const provider = await web3Modal.connect();
-    const web3 = new Web3(provider); // You can now use web3 with the selected provider
-    console.log(web3);
+    const web3 = new Web3(provider);
+    const accounts = await web3.eth.requestAccounts();
+    const userAccount = accounts[0];
+    const network = await web3.eth.net.getId();
+
+    console.log("user account", userAccount);
+    console.log("network", Number(network), "chain");
   } catch (err) {
     console.log("connection error", err);
   }
@@ -38,18 +43,7 @@ async function connectWallet() {
 
 const Join = () => {
   const handleConnectWallet = async () => {
-    if (window.ethereum) {
-      console.log("MetaMask is installed!");
-      if (window.solana) {
-        console.log("phantom working");
-      } else {
-        console.log("phantom not working");
-      }
-    } else {
-      console.log("MetaMask is not installed.");
-    }
     connectWallet();
-    // web3Modal.clearCachedProvider();
   };
   return (
     <div className="h-screen max-h-screen w-full bg-gradient-to-tr from-slate-950 to-blue-950 flex justify-center items-center">
