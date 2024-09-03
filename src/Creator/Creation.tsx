@@ -14,7 +14,7 @@ import { Outlet } from "react-router";
 
 export const Creation = () => {
   return (
-    <div className="p-10 bg-gradient-to-tr from-slate-950 to-blue-950 h-screen flex ">
+    <div className="p-10 bg-gradient-to-tr from-slate-950 to-blue-950 h-screen flex relative ">
       <div className="w-full h-full flex flex-col space-y-10">
         <h1 className="text-[2.7rem] font-bold text-white text-center">
           Categories
@@ -163,7 +163,9 @@ export const Creation = () => {
         height={100}
       /> */}
       </div>
-      <Outlet />
+      <div className="max-h-[30rem] max-w-[40rem] w-[80%] absolute bottom-[10rem] right-[2rem] z-[100] bg-transparent">
+        <Outlet />
+      </div>
     </div>
   );
 };

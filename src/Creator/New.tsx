@@ -17,7 +17,7 @@ export const NewContent = () => {
     }
   };
   return (
-    <div className="h-full w-full bg-white  rounded-l-lg shadow-lg basis-[45%]">
+    <div className="max-h-full w-full bg-white opacity-[.98]  rounded-l-lg shadow-lg basis-[45%]">
       <form className="p-5">
         <div className="max-w-md mx-auto p-2 bg-transparent rounded-lg">
           <div className="text-center mb-4">

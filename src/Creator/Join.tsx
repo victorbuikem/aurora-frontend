@@ -1,7 +1,4 @@
 import Web3 from "web3";
-import Web3Modal from "web3modal";
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import content from "../assets/content.png";
 import communities from "../assets/communities.png";
 import live from "../assets/live-streaming.png";
@@ -9,46 +6,51 @@ import creative from "../assets/creative.png";
 import idea from "../assets/idea.png";
 import network from "../assets/network.png";
 import content1 from "../assets/content1.png";
+import { init, useConnectWallet } from "@web3-onboard/react";
+import injectedModule from "@web3-onboard/injected-wallets";
+import { useEffect, useState } from "react";
 
-const providerOptions = {
-  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-      infuraId: "c8412280cee6482d900de9bea48cb8c9", // required for WalletConnect
-    },
-  },
-  coinbasewallet: {
-    package: CoinbaseWalletSDK,
-    options: {
-      appName: "My Awesome App",
-      infuraId: "c8412280cee6482d900de9bea48cb8c9", // required for Coinbase Wallet
-    },
-  },
-};
+// Sign up to get your free API key at https://explorer.blocknative.com/?signup=true
+// Required for Transaction Notifications and Transaction Preview
+const apiKey = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
 
-const web3Modal = new Web3Modal({
-  network: "mainnet", // optional
-  cacheProvider: true, // optional
-  providerOptions, // required
+const injected = injectedModule();
+
+const infuraKey = "c8412280cee6482d900de9bea48cb8c9";
+const rpcUrl = `https://mainnet.infura.io/v3/${infuraKey}`;
+
+// initialize Onboard
+const web3Onboard = init({
+  // This javascript object is unordered meaning props do not require a certain order
+  apiKey,
+  wallets: [injected],
+  chains: [
+    {
+      id: "0x1",
+      token: "ETH",
+      label: "Ethereum Mainnet",
+      rpcUrl,
+    },
+    {
+      id: "0x2105",
+      token: "ETH",
+      label: "Base",
+      rpcUrl: "https://mainnet.base.org",
+    },
+  ],
 });
 
-async function connectWallet() {
-  try {
-    web3Modal.clearCachedProvider();
-    const provider = await web3Modal.connect();
-    const web3 = new Web3(provider); // You can now use web3 with the selected provider
-    console.log(
-      await web3.eth.getBalance("0x8e48c90492bDdfb01c52745A5991939747aa0c95")
-    );
-  } catch (err) {
-    console.log("connection error", err);
-  }
-}
-
 const Join = () => {
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  const [web3, setWeb3] = useState(null);
+  useEffect(() => {
+    if (wallet) {
+      const web3Instance = new Web3(wallet.provider);
+      setWeb3(web3Instance);
+    }
+  }, [wallet]);
   const handleConnectWallet = async () => {
-    connectWallet();
-    // web3Modal.clearCachedProvider();
+    await connect();
   };
   return (
     <div className="h-screen max-h-screen w-full bg-gradient-to-tr from-slate-950 to-blue-950 flex justify-center items-center">
@@ -75,6 +77,10 @@ const Join = () => {
         >
           Connect Wallet
         </button>
+        {/* </button>
+        <button disabled={connecting} onClick={handleConnectWallet}>
+          {connecting ? "connecting" : wallet ? "disconnect" : "connect"}
+        </button> */}
       </section>
       <img
         src={content}
