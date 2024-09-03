@@ -8,6 +8,7 @@ import live from './assets/live-streaming.png'
 import creative from './assets/creative.png'
 import idea from './assets/idea.png'
 import network from './assets/network.png'
+import content1 from './assets/content1.png'
 
 const providerOptions = {
   walletconnect: {
@@ -61,9 +62,9 @@ const Join = () => {
   };
   return (
     <div className="h-screen max-h-screen w-full bg-gradient-to-tr from-slate-950 to-blue-950 flex justify-center items-center">
-      <section className="rounded-2xl z-20 bg-white/70 backdrop-blur-sm shadow-md shadow-blue-700 h-[30rem] w-[30rem] items-center p-10 ">
+      <section className="rounded-2xl bg-white/70 backdrop-blur-sm shadow-md shadow-blue-700 h-[30rem] w-[30rem] items-center p-10 ">
       <h1 className="text-slate-900 font-bold text-3xl font-mono mb-14 text-center">Welcome Creator!</h1>
-        <img src={content} alt="" width={100} height={100} className="bg-slate-900 filter invert sepia saturate-200 hue-rotate-90 rounded-full object-cover flex mx-auto"/>
+        <img src={content1} alt="" width={100} height={100} className="bg-slate-900 rounded-full object-cover flex mx-auto"/>
           <input type="text" className="text-lg mt-10 outline-none flex border-blue-950 w-full text-center rounded-xl border px-3 py-1 font-bold" placeholder="username"/>
   
         <button
