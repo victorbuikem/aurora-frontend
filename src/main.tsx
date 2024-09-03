@@ -12,6 +12,7 @@ window.Buffer = Buffer;
 
 import process from "process";
 import { CryptoProvider } from "./providers/web-3-provider";
+import CreatorID from "./Viewer/CreatorID";
 window.process = process;
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
     path: "/:id",
     element: <Arthakker1324 />,
   },
+  {
+    path: "/creatorid",
+    element: <CreatorID/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
