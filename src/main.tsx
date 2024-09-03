@@ -4,8 +4,10 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Join from "./Creator/Join";
-import Current from "./Creator/Current";
+import NewContent from "./Creator/New";
+import Creation from "./Creator/Creation";
 import { Buffer } from "buffer";
+import Arthakker1324 from "./Viewer/Arthakker1324";
 window.Buffer = Buffer;
 
 import process from "process";
@@ -34,9 +36,20 @@ const router = createBrowserRouter([
     path: "/creator/join",
     element: <Join />,
   },
+
   {
-    path: "/creator/new",
-    element: <Current />,
+    path: "/creator/creation",
+    element: <Creation />,
+    children: [
+      {
+        path: "new",
+        element: <NewContent />,
+      },
+    ],
+  },
+  {
+    path: "/arthakker1324",
+    element: <Arthakker1324 />,
   },
 ]);
 
