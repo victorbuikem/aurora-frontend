@@ -1,21 +1,62 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
+import axios from "axios";
+
+interface metadata {
+  title: string;
+  tag: string;
+}
 
 export const NewContent = () => {
   const [file, setFile] = useState<File>();
   const tagOptions = useRef<HTMLSelectElement>(null);
+  const [metadata, setMetaData] = useState<metadata>({
+    title: "",
+    tag: "",
+  });
+  const formData = new FormData();
+  const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setFile(event.target.files[0]);
     }
-    handleTagChange();
+    // handleTagChange();
   };
   const handleTagChange = () => {
     if (tagOptions.current != undefined) {
       const index = tagOptions.current.options.selectedIndex;
-      console.log(index);
+      const tag = tagOptions.current.options[index].value;
+      console.log("the tag is", tag);
+      setMetaData({ ...metadata, tag: tag });
     }
   };
+  const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setMetaData({ ...metadata, title: event.target.value });
+    console.log(metadata);
+  };
+  const handleUpload = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiSecret = import.meta.env.VITE_API_Secret;
+
+    if (file && metadata) {
+      formData.append("file", file);
+      const readyMetadata = JSON.stringify(metadata);
+      formData.append("metadata", readyMetadata);
+      const res = await axios.post(url, formData, {
+        maxContentLength: Infinity,
+        headers: {
+          //   "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+          pinata_api_key: `${apiKey}`,
+          pinata_secret_api_key: `${apiSecret}`,
+        },
+      });
+      console.log("first", res);
+    }
+  };
+
   return (
     <div className="max-h-full w-full bg-white opacity-[.98]  rounded-l-lg shadow-lg basis-[45%]">
       <form className="p-5">
@@ -44,7 +85,7 @@ export const NewContent = () => {
                 ></path>
               </svg>
               {file ? (
-                <div className="text-white">{file.name}</div>
+                <div className="text-black">{file.name}</div>
               ) : (
                 <div className="flex flex-col">
                   <strong className="text-gray-600">
@@ -76,6 +117,7 @@ export const NewContent = () => {
             id="description"
             className="w-full p-3 border border-gray-400 text-center flex justify-center items-center  text-slate-950 rounded-lg focus:outline-none"
             placeholder="e.g What is web 3 Lagos?"
+            onChange={handleTitleChange}
           ></textarea>
         </div>
 
@@ -87,19 +129,23 @@ export const NewContent = () => {
             id="category"
             className="w-full p-3 border border-gray-200 rounded-lg outline-none"
             ref={tagOptions}
+            onChange={handleTagChange}
           >
             <option value="">Select a category</option>
-            <option value="nature">Arts</option>
-            <option value="travel">Football</option>
-            <option value="food">Music</option>
-            <option value="lifestyle">News</option>
+            <option value="arts">Arts</option>
+            <option value="travel">Travel</option>
+            <option value="food">Food</option>
+            <option value="lifestyle">Lifestyle</option>
             <option value="technology">Technology</option>
             <option value="other">Other</option>
           </select>
         </div>
 
         <div className="text-center">
-          <button className="bg-gradient-to-b from-orange-600 to-orange-700 text-white px-7 py-2 rounded-lg hover:scale-110 duration-300 transition-colors">
+          <button
+            onClick={handleUpload}
+            className="bg-gradient-to-b from-orange-600 to-orange-700 text-white px-7 py-2 rounded-lg hover:scale-110 duration-300 transition-colors"
+          >
             Publish
           </button>
         </div>
