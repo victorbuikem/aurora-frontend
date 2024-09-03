@@ -89,14 +89,14 @@ export const NewContent = () => {
   };
 
   return (
-    <div className="max-h-full w-full bg-white opacity-[.98]  rounded-l-lg shadow-lg basis-[45%]">
+    <div className="max-h-full w-full bg-white opacity-[.98] slide-in rounded-lg shadow-lg basis-[45%]">
       <form className="p-5">
         <div className="max-w-md mx-auto p-2 bg-transparent rounded-lg">
           <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold text-white">
+            <h2 className="text-2xl font-bold text-slate-950">
               Upload a Photo or Video
             </h2>
-            <p className="text-gray-600">Share your moments with the world</p>
+            <p className="text-gray-600 text-xs">Share your moments with the world</p>
           </div>
 
           <div className="border-dashed border-2 border-gray-400 rounded-lg cursor-pointer hover:border-blue-500 transition-colors">
@@ -142,7 +142,7 @@ export const NewContent = () => {
             </button>
           </div> */}
         </div>
-        <div className="mb-4 mt-[3rem]">
+        <div className="my-2">
           <label className="block text-black font-semibold mb-2">Title</label>
           <textarea
             id="description"

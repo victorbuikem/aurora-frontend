@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.animate-spinn {
+    animation: spin 4s linear 7;
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+    50% {
+        transform: none;
+        animation-timing-function: cubic-bezier(0,0,0.2,1);
+    }
+}
+.animate-bouncee {
+    animation: bounce 1s 7;
+}
+
+@keyframes slide-in {
+    0%{
+        transform: translateY(50%);
+    }
+    50%{
+        transform: translateY(0%);
+    }
+}
+
+.slide-in{
+    animation: slide-in 3s;
+}
