@@ -10,7 +10,7 @@ import { ConnectBtn } from "../components/connect-btn";
 const Join = () => {
   return (
     <div className="h-screen max-h-screen w-full bg-gradient-to-tr from-slate-950 to-blue-950 flex justify-center items-center">
-      <section className="rounded-2xl bg-white/70 backdrop-blur-sm shadow-md shadow-blue-700 h-[30rem] w-[30rem] items-center p-10 ">
+      <section className="rounded-2xl bg-white/70 backdrop-blur-sm shadow-md shadow-blue-700 h-[25rem] w-[30rem] items-center p-10 ">
         <h1 className="text-slate-900 font-bold text-3xl font-mono mb-14 text-center">
           Welcome Creator!
         </h1>
