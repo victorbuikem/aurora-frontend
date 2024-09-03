@@ -47,6 +47,7 @@ const Join = () => {
     if (wallet) {
       const web3Instance = new Web3(wallet.provider);
       setWeb3(web3Instance);
+      console.log(wallet, web3Instance);
     }
   }, [wallet]);
   const handleConnectWallet = async () => {
@@ -65,15 +66,15 @@ const Join = () => {
           height={100}
           className="bg-slate-900 rounded-full object-cover flex mx-auto"
         />
-        <input
+        {/* <input
           type="text"
           className="text-lg mt-10 outline-none flex border-blue-950 w-full text-center rounded-xl border px-3 py-1 font-bold"
           placeholder="username"
-        />
+        /> */}
 
         <button
           onClick={handleConnectWallet}
-          className="bg-gradient-to-b from-orange-800 to-orange-700 rounded-2xl  px-7 py-3 my-5 mx-auto flex text-white text-center"
+          className="bg-gradient-to-b from-orange-800 to-orange-700 rounded-2xl  px-7 py-3 my-[8rem] mx-auto flex text-white text-center"
         >
           Connect Wallet
         </button>
