@@ -16,11 +16,15 @@ export const VideoPlayer = () => {
         </div>
 
         {/* Other Component */}
-        <div className="w-1/2 p-4 bg-gradient-to-r from-slate-950 to-blue-950 rounded-2xl">
-          <h1 className="text-white text-2xl mt-3 mb-7 text-center">
-            Appreciate this Creator
-          </h1>
-          <div className="flex items-center justify-between text-white bg-transparent shadow-md shadow-blue-950 rounded-2xl p-4">
+        <div className="w-1/2 h-[500px] p-4 bg-slate-200 shadow-md rounded-2xl">
+          <div className="text-center p-4">
+
+            <h1 className="text-2xl">
+              Appreciate this Creator
+            </h1>
+            <p>Show your love for {`{creator_name}`}. By tipping them. Motivating them to do more.</p>
+          </div>
+          <div className="flex items-center justify-between p-4">
             <p>30.203139545000</p>
             <div className="flex space-x-1 items-center">
               <img src={logo} alt="" width={20} height={20} />
