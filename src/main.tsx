@@ -39,7 +39,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/creator/creation",
+    path: "/creator",
     element: <Creation />,
     children: [
       {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/arthakker1324",
+    path: "/{}",
     element: <Arthakker1324 />,
   },
 ]);
