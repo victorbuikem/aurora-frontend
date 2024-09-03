@@ -11,6 +11,7 @@ import Arthakker1324 from "./Viewer/Arthakker1324";
 window.Buffer = Buffer;
 
 import process from "process";
+import { CryptoProvider } from "./providers/web-3-provider";
 window.process = process;
 
 const router = createBrowserRouter([
@@ -55,6 +56,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CryptoProvider>
+      <RouterProvider router={router} />
+    </CryptoProvider>
   </React.StrictMode>
 );
