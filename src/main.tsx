@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Join from "./Join";
+import Join from "./Creator/Join";
+import Current from "./Creator/Current";
 import { Buffer } from "buffer";
 window.Buffer = Buffer;
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/creator/join",
     element: <Join />,
+  },
+  {
+    path: "/creator/new",
+    element: <Current />,
   },
 ]);
 
