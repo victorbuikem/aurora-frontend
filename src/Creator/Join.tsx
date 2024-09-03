@@ -37,7 +37,9 @@ async function connectWallet() {
     web3Modal.clearCachedProvider();
     const provider = await web3Modal.connect();
     const web3 = new Web3(provider); // You can now use web3 with the selected provider
-    console.log(web3.eth.getBalance());
+    console.log(
+      await web3.eth.getBalance("0x8e48c90492bDdfb01c52745A5991939747aa0c95")
+    );
   } catch (err) {
     console.log("connection error", err);
   }
