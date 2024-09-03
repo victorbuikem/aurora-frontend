@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import news from '../assets/news.jpg';
-import sports from '../assets/sports.jpg';
-import others from '../assets/others.jpg';
-import tech from '../assets/tech.jpg';
-import arts from '../assets/arts.jpg';
-import music from '../assets/music.jpg';
-import video from '../assets/animated.mp4';
-import thumbnail from '../assets/thumbnail.jpg';
-import MediaModal from './MediaModal';
+import { useState } from "react";
+import news from "../assets/news.jpg";
+import sports from "../assets/sports.jpg";
+import others from "../assets/others.jpg";
+import tech from "../assets/tech.jpg";
+import arts from "../assets/arts.jpg";
+import music from "../assets/music.jpg";
+import video from "../assets/animated.mp4";
+import thumbnail from "../assets/thumbnail.jpg";
+import MediaModal from "./MediaModal";
 
 // Define the type for the category data, which can contain both strings (image/video paths)
 type CategoryData = {
@@ -21,17 +21,17 @@ const categoryData: CategoryData = {
   News: [news, news, news],
   Sports: [sports, sports, sports],
   Tech: [tech, tech, tech],
-  Others: [others, others, video] // Include video in a category
+  Others: [others, others, video], // Include video in a category
 };
 
 const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('Arts');
+  const [selectedCategory, setSelectedCategory] = useState<string>("Arts");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [currentMedia, setCurrentMedia] = useState<string>('');
+  const [currentMedia, setCurrentMedia] = useState<string>("");
   const [isVideo, setIsVideo] = useState<boolean>(false);
 
   const handleMediaClick = (mediaSrc: string) => {
-    setIsVideo(mediaSrc.endsWith('.mp4'));
+    setIsVideo(mediaSrc.endsWith(".mp4"));
     setCurrentMedia(mediaSrc);
     setIsModalOpen(true);
   };
@@ -41,22 +41,26 @@ const Categories = () => {
       <h1 className="text-3xl text-white font-bold mb-6">Select a Category</h1>
       <div className="mb-6 flex space-x-4">
         {Object.keys(categoryData).map((category) => (
-         <button
-         key={category}
-         onClick={() => setSelectedCategory(category)}
-         className={`px-2 py-1 text-xs rounded-lg font-medium border-black border ${
-           selectedCategory === category ? 'bg-white text-black' : 'bg-black text-white'
-         } transition duration-300 ease-in-out transform hover:scale-105`}
-       >
-         {category}
-       </button>
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-2 py-1 text-xs rounded-lg font-medium border-black border ${
+              selectedCategory === category
+                ? "bg-white text-black"
+                : "bg-black text-white"
+            } transition duration-300 ease-in-out transform hover:scale-105`}
+          >
+            {category}
+          </button>
         ))}
       </div>
 
       <div>
-        <h2 className="text-2xl font-semibold mb-4 text-white">{selectedCategory}</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          {selectedCategory}
+        </h2>
         <div className="flex flex-wrap -mx-2 w-full">
-          {categoryData[selectedCategory].map((element, index: number) => (
+          {categoryData[selectedCategory]?.map((element, index: number) => (
             <div
               key={index}
               className="w-full border border-slate-200 bg-white rounded-2xl h-60 flex flex-col-reverse sm:w-1/2 md:w-1/3 lg:w-[30%] mx-2 overflow-hidden"
@@ -66,7 +70,7 @@ const Categories = () => {
                 <p className="text-md font-bold">Lorem ipsum dolor...</p>
                 <p className="my-1 text-sm">{`donations`}</p>
               </div>
-              {element.endsWith('.mp4') ? (
+              {element.endsWith(".mp4") ? (
                 <video
                   src={element}
                   className="w-full h-48 cursor-pointer hover:scale-110 duration-300 object-cover"

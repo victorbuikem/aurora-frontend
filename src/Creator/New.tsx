@@ -4,6 +4,7 @@ import { useCrypto } from "../providers/web-3-provider";
 import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "../components/toaster";
 import { useToast } from "../components/use-toast";
+import { useNavigate } from "react-router";
 // import { ToastAction } from "../components/toast";
 
 interface metadata {
@@ -18,8 +19,10 @@ export const NewContent = () => {
     title: "",
     tag: "",
   });
+  const [clicked, SetClicked] = useState<boolean>(false);
   const { web3 } = useCrypto();
   const { toast } = useToast();
+  const navigate = useNavigate();
   if (web3?.eth && web3?.eth.Contract) {
     // const contract = new web3.eth.Contract();
   }
@@ -31,7 +34,6 @@ export const NewContent = () => {
     if (event.target.files) {
       setFile(event.target.files[0]);
     }
-    // handleTagChange();
   };
   const handleTagChange = () => {
     if (tagOptions.current != undefined) {
@@ -62,8 +64,11 @@ export const NewContent = () => {
       return res;
     },
     onSuccess: async () => {
+      setTimeout(() => {
+        navigate("/creator", { replace: true });
+      }, 3000);
       return toast({
-        title: "Video Upload Successful",
+        title: "Content Upload Successful",
         description: `Thank you for uploading`,
       });
     },
@@ -79,6 +84,7 @@ export const NewContent = () => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault();
+    SetClicked(true);
 
     if (file && metadata) {
       formData.append("file", file);
@@ -96,7 +102,9 @@ export const NewContent = () => {
             <h2 className="text-2xl font-bold text-slate-950">
               Upload a Photo or Video
             </h2>
-            <p className="text-gray-600 text-xs">Share your moments with the world</p>
+            <p className="text-gray-600 text-xs">
+              Share your moments with the world
+            </p>
           </div>
 
           <div className="border-dashed border-2 border-gray-400 rounded-lg cursor-pointer hover:border-blue-500 transition-colors">
@@ -171,6 +179,11 @@ export const NewContent = () => {
             <option value="other">Other</option>
           </select>
         </div>
+        {(!file || !metadata) && clicked && (
+          <p className="text-red-500 text-[.75rem] mt-[-0.8rem] ml-[.7rem] font-semibold">
+            No empty field!!
+          </p>
+        )}
 
         <div className="text-center">
           <button
