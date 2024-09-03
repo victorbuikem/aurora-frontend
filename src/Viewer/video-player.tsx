@@ -1,16 +1,18 @@
 import video from "../assets/video.mp4";
 import logo from "../assets/aurora.ico";
-export const Arthakker1324 = () => {
+import { Display } from "../components/display";
+
+
+export const VideoPlayer = () => {
   return (
-    <div className="p-10 ">
-      <input type="search" name="" id="" className="w-full px-5 py-2" />
-      <section className="flex items-center justify-between p-4 space-x-10">
+    <>
+      <div className="bg-sky-400 h-16 p-4 flex justify-end">
+        <a href="/creator/join" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white h-10 px-4 py-2"> Become a creator Today</a>
+      </div>
+      <section className="flex justify-between p-4 items-start space-x-10">
         {/* Video Element */}
         <div className="w-full">
-          <video className="w-full h-auto rounded-2xl object-cover" controls>
-            <source src={video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <Display src={video} type="video" />
         </div>
 
         {/* Other Component */}
@@ -38,8 +40,6 @@ export const Arthakker1324 = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
-
-export default Arthakker1324;

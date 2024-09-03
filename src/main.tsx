@@ -7,27 +7,18 @@ import Join from "./Creator/Join";
 import NewContent from "./Creator/New";
 import Creation from "./Creator/Creation";
 import { Buffer } from "buffer";
-import Arthakker1324 from "./Viewer/Arthakker1324";
-window.Buffer = Buffer;
-
+import { VideoPlayer } from "./Viewer/video-player";
 import process from "process";
 import { CryptoProvider } from "./providers/web-3-provider";
+import { Carousel } from "./components/carousel";
+
+window.Buffer = Buffer;
 window.process = process;
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <div>Hello logins</div>,
-    errorElement: <h1>Error could not locate resource </h1>,
-  },
-  {
-    path: "/register",
-    element: <div>Hello register</div>,
-    errorElement: <h1>Sorry resource not found</h1>,
-  },
-  {
     path: "/",
-    element: <div>Hello home page</div>,
+    element: <Carousel />,
   },
   {
     path: "/app",
@@ -50,7 +41,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/:id",
-    element: <Arthakker1324 />,
+    element: <VideoPlayer />,
   },
 ]);
 
