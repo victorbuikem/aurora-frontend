@@ -54,7 +54,7 @@ const Join = () => {
   };
   return (
     <div className="h-screen max-h-screen w-full bg-gradient-to-tr from-slate-950 to-blue-950 flex justify-center items-center">
-      <section className="rounded-2xl bg-white/70 backdrop-blur-sm shadow-md shadow-blue-700 h-[30rem] w-[30rem] items-center p-10 ">
+      <section className="rounded-2xl bg-white/70 backdrop-blur-sm shadow-md shadow-blue-700 h-[25rem] w-[30rem] items-center p-10 ">
         <h1 className="text-slate-900 font-bold text-3xl font-mono mb-14 text-center">
           Welcome Creator!
         </h1>
@@ -65,15 +65,10 @@ const Join = () => {
           height={100}
           className="bg-slate-900 rounded-full object-cover flex mx-auto"
         />
-        <input
-          type="text"
-          className="text-lg mt-10 outline-none flex border-blue-950 w-full text-center rounded-xl border px-3 py-1 font-bold"
-          placeholder="username"
-        />
 
         <button
           onClick={handleConnectWallet}
-          className="bg-gradient-to-b from-orange-800 to-orange-700 rounded-2xl  px-7 py-3 my-5 mx-auto flex text-white text-center"
+          className="bg-orange-600 rounded-2xl  px-7 py-3 my-10 cursor-pointer hover:bg-orange-600 duration-300 mx-auto flex text-white text-center"
         >
           Connect Wallet
         </button>
