@@ -55,7 +55,6 @@ function CryptoProvider({ children }: { children: React.ReactNode }) {
             setWeb3(null);
         }
     }, [wallet]);
-
     return (
         <CryptoContext.Provider value={{ wallet, connecting, connect, disconnect }}>{children}</CryptoContext.Provider>
     )
