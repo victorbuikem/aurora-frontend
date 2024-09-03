@@ -1,5 +1,10 @@
 import { ChangeEvent, useRef, useState } from "react";
 import axios from "axios";
+import { useCrypto } from "../providers/web-3-provider";
+import { useMutation } from "@tanstack/react-query";
+import { Toaster } from "../components/toaster";
+import { useToast } from "../components/use-toast";
+// import { ToastAction } from "../components/toast";
 
 interface metadata {
   title: string;
@@ -13,6 +18,12 @@ export const NewContent = () => {
     title: "",
     tag: "",
   });
+  const { web3 } = useCrypto();
+  const { toast } = useToast();
+  if (web3?.eth && web3?.eth.Contract) {
+    // const contract = new web3.eth.Contract();
+  }
+
   const formData = new FormData();
   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
@@ -30,21 +41,15 @@ export const NewContent = () => {
       setMetaData({ ...metadata, tag: tag });
     }
   };
+
   const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setMetaData({ ...metadata, title: event.target.value });
     console.log(metadata);
   };
-  const handleUpload = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    const apiKey = import.meta.env.VITE_API_KEY;
-    const apiSecret = import.meta.env.VITE_API_Secret;
-
-    if (file && metadata) {
-      formData.append("file", file);
-      const readyMetadata = JSON.stringify(metadata);
-      formData.append("metadata", readyMetadata);
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const apiKey = import.meta.env.VITE_API_KEY;
+      const apiSecret = import.meta.env.VITE_API_Secret;
       const res = await axios.post(url, formData, {
         maxContentLength: Infinity,
         headers: {
@@ -54,6 +59,32 @@ export const NewContent = () => {
         },
       });
       console.log("first", res);
+      return res;
+    },
+    onSuccess: async () => {
+      return toast({
+        title: "Video Upload Successful",
+        description: `Thank you for uploading`,
+      });
+    },
+    onError: async () => {
+      return toast({
+        variant: "destructive",
+        title: "Upload failed",
+        description: "Please Try Again or refresh the page",
+      });
+    },
+  });
+  const handleUpload = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+
+    if (file && metadata) {
+      formData.append("file", file);
+      const readyMetadata = JSON.stringify(metadata);
+      formData.append("metadata", readyMetadata);
+      mutation.mutate();
     }
   };
 
@@ -115,19 +146,19 @@ export const NewContent = () => {
           <label className="block text-black font-semibold mb-2">Title</label>
           <textarea
             id="description"
-            className="w-full p-3 border border-gray-400 text-center flex justify-center items-center  text-slate-950 rounded-lg focus:outline-none"
+            className="w-full p-3 border bg-white border-gray-400 text-center flex justify-center items-center  text-slate-950 rounded-lg focus:outline-none"
             placeholder="e.g What is web 3 Lagos?"
             onChange={handleTitleChange}
           ></textarea>
         </div>
 
         <div className="mb-4">
-          <label className="block text-white font-semibold mb-2">
+          <label className="block text-white font-semibold mb-2 ">
             Category
           </label>
           <select
             id="category"
-            className="w-full p-3 border border-gray-200 rounded-lg outline-none"
+            className="w-full p-3 border border-gray-200 rounded-lg outline-none bg-white"
             ref={tagOptions}
             onChange={handleTagChange}
           >
@@ -146,10 +177,18 @@ export const NewContent = () => {
             onClick={handleUpload}
             className="bg-gradient-to-b from-orange-600 to-orange-700 text-white px-7 py-2 rounded-lg hover:scale-110 duration-300 transition-colors"
           >
-            Publish
+            {mutation.isPending ? (
+              <div>
+                <span className="loading loading-ring loading-xs"></span>
+                <span className="loading loading-ring loading-xs"></span>
+              </div>
+            ) : (
+              <p>Publish</p>
+            )}
           </button>
         </div>
       </form>
+      {(mutation.isSuccess || mutation.isError) && <Toaster />}
     </div>
   );
 };

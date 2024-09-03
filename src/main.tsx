@@ -2,17 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import App from "./App";
 import Join from "./Creator/Join";
 import NewContent from "./Creator/New";
 import Creation from "./Creator/Creation";
 import { Buffer } from "buffer";
 import Arthakker1324 from "./Viewer/Arthakker1324";
+import { CryptoProvider } from "./providers/web-3-provider";
 window.Buffer = Buffer;
 
 import process from "process";
-import { CryptoProvider } from "./providers/web-3-provider";
 window.process = process;
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -35,16 +38,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/creator/join",
-    element: <Join />,
+    element: (
+      <CryptoProvider>
+        <Join />
+      </CryptoProvider>
+    ),
   },
 
   {
     path: "/creator",
-    element: <Creation />,
+    element: (
+      <CryptoProvider>
+        <Creation />
+      </CryptoProvider>
+    ),
     children: [
       {
         path: "new",
-        element: <NewContent />,
+        element: (
+          <QueryClientProvider client={queryClient}>
+            <NewContent />
+          </QueryClientProvider>
+        ),
       },
     ],
   },
@@ -56,8 +71,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CryptoProvider>
-      <RouterProvider router={router} />
-    </CryptoProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
