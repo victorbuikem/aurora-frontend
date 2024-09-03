@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/{}",
+    path: "/:id",
     element: <Arthakker1324 />,
   },
 ]);
