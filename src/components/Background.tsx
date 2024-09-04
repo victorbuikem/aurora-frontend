@@ -1,32 +1,13 @@
 import communities from "../assets/communities.png";
 import content from "../assets/content.png";
-import content1 from "../assets/content1.png";
 import creative from "../assets/creative.png";
 import idea from "../assets/idea.png";
 import live from "../assets/live-streaming.png";
 import network from "../assets/network.png";
-import { ConnectBtn } from "../components/connect-btn";
 
-const Join = () => {
+export const Background = () => {
   return (
-    <div className="h-screen max-h-screen w-full bg-blue-800 flex justify-center items-center">
-      <section className="rounded-2xl bg-white h-[30rem] w-[30rem] items-center p-10 ">
-        <h1 className="text-slate-900 font-bold text-3xl font-mono mb-14 text-center">
-          Welcome Creator!
-        </h1>
-        <p className="text-center my-4 text-slate-600">
-          Join or Get back to your account to start making things viewers would
-          love
-        </p>
-        <img
-          src={content1}
-          alt=""
-          width={100}
-          height={100}
-          className="bg-slate-900 rounded-full object-cover flex mx-auto"
-        />
-        <ConnectBtn />
-      </section>
+    <div className="h-screen z-10 absolute w-full bg-blue-700">
       <img
         src={content}
         alt=""
@@ -95,4 +76,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default Background;

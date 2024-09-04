@@ -1,169 +1,54 @@
-import news from "../assets/news.jpg";
-import sports from "../assets/sports.jpg";
-import others from "../assets/others.jpg";
-import tech from "../assets/tech.jpg";
-import arts from "../assets/arts.jpg";
-import music from "../assets/music.jpg";
-// import content from "../assets/content.png";
-// import communities from "../assets/communities.png";
-// import live from "../assets/live-streaming.png";
-// import creative from "../assets/creative.png";
-// import idea from "../assets/idea.png";
-// import network from "../assets/network.png";
+import { useNavigate } from "react-router-dom";
+import Categories from "../Viewer/Category";
+import logo from "../assets/aurora.ico";
+import Background from "../components/Background";
 import { Outlet } from "react-router";
 
 export const Creation = () => {
+  const navigate = useNavigate();
+  const handleCreateNewClick = () => {
+    navigate("new"); // Navigate to the "Create" scene
+  };
+
   return (
-    <div className="p-10 bg-gradient-to-tr from-slate-950 to-blue-950 h-screen flex relative ">
-      <div className="w-full h-full flex flex-col space-y-10">
-        <h1 className="text-[2.7rem] font-bold text-white text-center">
-          Categories
-        </h1>
-        <div className="max-w-7xl mx-auto p-4">
-          <div className="flex flex-wrap -mx-2 z-20 relative">
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
-              <div className="overflow-hidden rounded-lg relative">
-                <img
-                  src={arts}
-                  alt="Art Category"
-                  className="w-full h-48 object-cover cursor-pointer duration-300 hover:scale-110"
-                />
-                <p className="absolute text-white text-6xl font-bold top-1/2 left-1/2 cursor-pointer">
-                  Arts
-                </p>
-              </div>
+    <div className="">
+      <div>
+        <Background />
+        <div className="flex items-center justify-between p-4 relative z-20">
+          <img
+            src={logo}
+            alt=""
+            width={50}
+            height={50}
+            className="cursor-pointer"
+          />
+          <div className="flex space-x-3 items-center">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="pl-10 pr-4 py-2 border rounded-lg shadow-sm outline-none focus:ring-black bg-white"
+              />
             </div>
-
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
-              <div className="overflow-hidden rounded-lg relative">
-                <img
-                  src={music}
-                  alt="Music Category"
-                  className="w-full h-48 object-cover cursor-pointer duration-300 hover:scale-110"
-                />
-                <p className="absolute text-white text-6xl font-bold top-1/2 left-1/2 cursor-pointer">
-                  Music
-                </p>
-              </div>
-            </div>
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
-              <div className="overflow-hidden rounded-lg relative">
-                <img
-                  src={news}
-                  alt="News Category"
-                  className="w-full h-48 object-cover cursor-pointer duration-300 hover:scale-110"
-                />
-                <p className="absolute text-white text-6xl font-bold top-1/2 left-1/2 cursor-pointer">
-                  News
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
-              <div className="overflow-hidden rounded-lg relative cursor-pointer">
-                <img
-                  src={sports}
-                  alt="Sports Category"
-                  className="w-full h-48 object-cover cursor-pointer duration-300 hover:scale-110"
-                />
-                <p className="absolute text-white text-6xl font-bold top-1/2 left-1/2 cursor-pointer">
-                  Sports
-                </p>
-              </div>
-            </div>
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
-              <div className="overflow-hidden rounded-lg relative cursor-pointer">
-                <img
-                  src={tech}
-                  alt="Tech Category"
-                  className="w-full h-48 object-cover cursor-pointer duration-300 hover:scale-110"
-                />
-                <p className="absolute text-white text-6xl font-bold top-1/2 left-1/2 cursor-pointer">
-                  Tech
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
-              <div className="overflow-hidden rounded-lg relative">
-                <img
-                  src={others}
-                  alt="Others Category"
-                  className="w-full h-48 object-cover cursor-pointer duration-300 hover:scale-110"
-                />
-                <p className="absolute text-white text-6xl font-bold top-1/2 left-1/2">
-                  Others
-                </p>
-              </div>
-            </div>
+            <button className="px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-white hover:text-black border border-black focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-opacity-50">
+              Search
+            </button>
           </div>
+
+          <button
+            onClick={handleCreateNewClick} // Add onClick handler
+            className="ml-2 px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-white hover:text-black border border-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Create New
+          </button>
         </div>
-        {/* <img
-        src={content}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-20 left-20"
-        width={100}
-        height={100}
-      /> */}
-        {/* <img
-        src={idea}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-40 left-60"
-        width={100}
-        height={100}
-      />
-      <img
-        src={communities}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-80 left-20"
-        width={100}
-        height={100}
-      />
-      <img
-        src={live}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 bottom-10 left-80"
-        width={100}
-        height={100}
-      /> */}
-        {/* <img src={content} alt="" className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 bottom-20 right-20" width={100} height={100}/> */}
-        {/* <img
-        src={creative}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-60 right-20"
-        width={100}
-        height={100}
-      />
-      <img
-        src={live}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-10 right-10"
-        width={100}
-        height={100}
-      />
-      <img
-        src={network}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-80 right-80"
-        width={100}
-        height={100}
-      /> */}
-        {/* <img
-        src={creative}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 bottom-10 right-10"
-        width={100}
-        height={100}
-      />
-      <img
-        src={idea}
-        alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 top-0 left-1/2"
-        width={100}
-        height={100}
-      /> */}
+        <h1 className="text-center text-black font-bold text-3xl mt-10">{`CreatorID`}</h1>
+        <p className="text-center text-sm my-2">
+          about this creator who loves creating what you love
+        </p>
+        <Categories />
       </div>
-      <div className="max-h-[30rem] max-w-[40rem] w-[80%] absolute bottom-[10rem] right-[2rem] z-[100] bg-transparent">
+      <div className="max-h-[30rem] max-w-[40rem] w-[30%] absolute bottom-28 pb-10 left-[2rem] z-[100] ">
         <Outlet />
       </div>
     </div>
