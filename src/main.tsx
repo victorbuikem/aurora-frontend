@@ -5,22 +5,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Carousel } from "./components/carousel";
-import Creation from "./Creator/Creation";
-import Join from "./Creator/Join";
-import NewContent from "./Creator/New";
+import Creation from "./Creator/creation";
+import Join from "./Creator/join";
+import NewContent from "./Creator/new";
 import "./index.css";
 import { CryptoProvider } from "./providers/web-3-provider";
 import CreatorID from "./Viewer/creator-id";
+import User from './Viewer/User';
 import { VideoPlayer } from "./Viewer/video-player";
 window.Buffer = Buffer;
-import Creation from "./Creator/Creation";
-import { Buffer } from "buffer";
-import CreatorID from "./Viewer/CreatorID";
-import User from './Viewer/User';
-import { CryptoProvider } from "./providers/web-3-provider";
 window.Buffer = Buffer;
 
-import process from "process";
 window.process = process;
 const queryClient = new QueryClient();
 
