@@ -7,7 +7,7 @@ import arts from "../assets/arts.jpg";
 import music from "../assets/music.jpg";
 import video from "../assets/animated.mp4";
 import thumbnail from "../assets/thumbnail.jpg";
-import MediaModal from "./MediaModal";
+import MediaModal from "./media-modal";
 
 // Define the type for the category data, which can contain both strings (image/video paths)
 type CategoryData = {
@@ -44,11 +44,10 @@ const Categories = () => {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-2 py-1 text-xs rounded-lg font-medium border-black border ${
-              selectedCategory === category
+            className={`px-2 py-1 text-xs rounded-lg font-medium border-black border ${selectedCategory === category
                 ? "bg-white text-black"
                 : "bg-black text-white"
-            } transition duration-300 ease-in-out transform hover:scale-105`}
+              } transition duration-300 ease-in-out transform hover:scale-105`}
           >
             {category}
           </button>

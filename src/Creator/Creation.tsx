@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Categories from "../Viewer/Category";
+import Categories from "../Viewer/category";
 import logo from "../assets/aurora.ico";
-import Background from "../components/Background";
+import Background from "../components/background";
 import { Outlet } from "react-router";
 
 export const Creation = () => {
@@ -30,14 +30,14 @@ export const Creation = () => {
                 className="pl-10 pr-4 py-2 border rounded-lg shadow-sm outline-none focus:ring-black bg-white"
               />
             </div>
-            <button className="px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-white hover:text-black border border-black focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-opacity-50">
+            <button className="px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-opacity-50">
               Search
             </button>
           </div>
 
           <button
             onClick={handleCreateNewClick} // Add onClick handler
-            className="ml-2 px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-white hover:text-black border border-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="ml-2 px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             Create New
           </button>
