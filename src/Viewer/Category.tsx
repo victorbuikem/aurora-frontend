@@ -47,9 +47,9 @@ const Categories = () => {
       </div>
 
       <div>
-        <h2 className="text-2xl font-semibold mb-4 text-white">
+        {/* <h2 className="text-2xl font-semibold mb-4 text-black">
           {selectedCategory}
-        </h2>
+        </h2> */}
         <div className="flex flex-wrap -mx-2 w-full">
           {categoryData[selectedCategory]?.map((element, index: number) => (
             <div
