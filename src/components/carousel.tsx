@@ -13,8 +13,6 @@ export function Carousel() {
     return (
 
         <div className=''>
-
-
             <Background />
             <div className="flex items-center justify-between p-4 relative z-20">
                 <img src={logo} alt="" width={50} height={50} className='cursor-pointer' />

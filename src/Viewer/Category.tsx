@@ -1,13 +1,13 @@
 import { useState } from "react";
-import news from "../assets/news.jpg";
-import sports from "../assets/sports.jpg";
-import others from "../assets/others.jpg";
-import tech from "../assets/tech.jpg";
+import video from "../assets/animated.mp4";
 import arts from "../assets/arts.jpg";
 import music from "../assets/music.jpg";
-import video from "../assets/animated.mp4";
+import news from "../assets/news.jpg";
+import others from "../assets/others.jpg";
+import sports from "../assets/sports.jpg";
+import tech from "../assets/tech.jpg";
 import thumbnail from "../assets/thumbnail.jpg";
-import MediaModal from "./media-modal";
+import { useNavigate } from "react-router";
 
 // Define the type for the category data, which can contain both strings (image/video paths)
 type CategoryData = {
@@ -26,15 +26,7 @@ const categoryData: CategoryData = {
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("Arts");
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [currentMedia, setCurrentMedia] = useState<string>("");
-  const [isVideo, setIsVideo] = useState<boolean>(false);
-
-  const handleMediaClick = (mediaSrc: string) => {
-    setIsVideo(mediaSrc.endsWith(".mp4"));
-    setCurrentMedia(mediaSrc);
-    setIsModalOpen(true);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="p-8 relative z-20">
@@ -45,8 +37,8 @@ const Categories = () => {
             key={category}
             onClick={() => setSelectedCategory(category)}
             className={`px-2 py-1 text-xs rounded-lg font-medium border-black border ${selectedCategory === category
-                ? "bg-white text-black"
-                : "bg-black text-white"
+              ? "bg-white text-black"
+              : "bg-black text-white"
               } transition duration-300 ease-in-out transform hover:scale-105`}
           >
             {category}
@@ -63,7 +55,9 @@ const Categories = () => {
             <div
               key={index}
               className="w-full border border-slate-200 bg-white rounded-2xl h-60 flex flex-col-reverse sm:w-1/2 md:w-1/3 lg:w-[30%] mx-2 overflow-hidden"
-              onClick={() => handleMediaClick(element)}
+              onClick={() => {
+                navigate('/test_id')
+              }}
             >
               <div className="p-2">
                 <p className="text-md font-bold">Lorem ipsum dolor...</p>
@@ -89,13 +83,13 @@ const Categories = () => {
           ))}
         </div>
       </div>
-
+      {/* 
       <MediaModal
         mediaSrc={currentMedia}
         isVideo={isVideo}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      />
+      /> */}
     </div>
   );
 };
