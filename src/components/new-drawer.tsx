@@ -93,31 +93,27 @@ export function NewDrawer() {
 
   return (
     <div className="relative z-10 ">
-      <div
-        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
-      />
-
+      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0" />
       <div className="fixed inset-0 overflow-hidden  slide-in">
         <div className="absolute inset-0 overflow-hidden">
           <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <div
-              className="pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:translate-x-full sm:duration-700"
-            >
+            <div className="pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:translate-x-full sm:duration-700">
               <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                 <div className="px-4 sm:px-6">
                   <div className="flex items-start justify-between">
-                    <h2 className="text-base font-semibold leading-6 text-gray-900">Create New Content</h2>
+                    <h2 className="text-base font-semibold leading-6 text-gray-900">
+                      Create New Content
+                    </h2>
                     <div className="ml-3 flex h-7 items-center">
                       <button
                         type="button"
                         onClick={() => {
-                          navigate("/creator")
+                          navigate("/creator");
                         }}
                         className="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       >
                         <span className="absolute -inset-2.5" />
-                        <span className="sr-only">Close panel</span>
-                        x
+                        <span className="sr-only">Close panel</span>x
                       </button>
                     </div>
                   </div>
@@ -170,14 +166,26 @@ export function NewDrawer() {
                           />
                         </label>
                       </div>
-                    </div>
-                    <div className="my-2">
-                      <label className="block text-black font-semibold mb-2">Title</label>
 
+                      {/* <div className="text-center mt-4">
+            <button className="bg-gradient-to-b from-orange-600 to-orange-700 text-white px-7 py-2 rounded-lg hover:scale-110 duration-300 transition-colors">
+              Upload
+            </button>
+          </div> */}
+                    </div>
+
+
+
+
+
+                    <div className="my-2">
+                      <label className="block text-black font-semibold mb-2">
+                        Title
+                      </label>
 
                       <textarea
                         id="description"
-                        className="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="e.g What is web 3 Lagos?"
                         onChange={handleTitleChange}
                       ></textarea>
@@ -229,7 +237,6 @@ export function NewDrawer() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
