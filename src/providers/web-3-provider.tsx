@@ -5,22 +5,24 @@ import {
   WalletState,
 } from "@web3-onboard/core";
 import injectedModule from "@web3-onboard/injected-wallets";
-import { init, useConnectWallet } from "@web3-onboard/react";
+import {
+  init,
+  useConnectWallet,
+  Web3OnboardProvider,
+} from "@web3-onboard/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import Web3 from "web3";
 
-type CtxType = {
+export type CtxType = {
   wallet: WalletState | null;
   connecting: boolean;
   disconnect: (wallet: DisconnectOptions) => Promise<WalletState[]>;
   connect: (opts?: ConnectOptions) => Promise<WalletState[]>;
   web3: Web3 | null;
-  test: string;
 };
 
 const CryptoContext = createContext<CtxType | undefined>(undefined);
 
-// TODO: This should be an environment variable - Chukwuma
 const API_KEY = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
 const INFURA_KEY = "c8412280cee6482d900de9bea48cb8c9";
 const RPC_URL = `https://mainnet.infura.io/v3/${INFURA_KEY}`;
@@ -28,7 +30,7 @@ const RPC_URL = `https://mainnet.infura.io/v3/${INFURA_KEY}`;
 const injected = injectedModule();
 
 // Initialize Onboard
-init({
+const onboard = init({
   apiKey: API_KEY,
   wallets: [injected],
   chains: [
@@ -47,25 +49,8 @@ init({
   ],
 });
 function CryptoProvider({ children }: { children: React.ReactNode }) {
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
-  const [web3, setWeb3] = useState<Web3 | null>(null);
-
-  useEffect(() => {
-    if (wallet?.provider) {
-      const web3Instance = new Web3(wallet.provider);
-      setWeb3(web3Instance);
-      console.log({ wallet, test: wallet.provider });
-    } else {
-      setWeb3(null);
-    }
-  }, [wallet]);
-
   return (
-    <CryptoContext.Provider
-      value={{ wallet, connecting, connect, disconnect, web3, test: "nfdbvjk" }}
-    >
-      {children}
-    </CryptoContext.Provider>
+    <Web3OnboardProvider web3Onboard={onboard}>{children}</Web3OnboardProvider>
   );
 }
 

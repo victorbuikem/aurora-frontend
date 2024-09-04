@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "../components/toaster";
 import { useToast } from "../components/use-toast";
 import { useNavigate } from "react-router";
+
 // import { ToastAction } from "../components/toast";
 
 interface metadata {
@@ -23,6 +24,7 @@ export const NewContent = () => {
   const { web3 } = useCrypto();
   const { toast } = useToast();
   const navigate = useNavigate();
+
   if (web3?.eth && web3?.eth.Contract) {
     // const contract = new web3.eth.Contract();
   }
@@ -47,6 +49,7 @@ export const NewContent = () => {
   const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setMetaData({ ...metadata, title: event.target.value });
     console.log(metadata);
+    console.log("hey there");
   };
   const mutation = useMutation({
     mutationFn: async () => {

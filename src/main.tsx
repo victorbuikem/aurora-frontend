@@ -7,11 +7,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Carousel } from "./components/carousel";
 import Creation from "./Creator/Creation";
 import Join from "./Creator/Join";
-import NewContent from "./Creator/New";
 import "./index.css";
 import { CryptoProvider } from "./providers/web-3-provider";
 import User from "./Viewer/User";
 import { VideoPlayer } from "./Viewer/video-player";
+import { NewDrawer } from "./components/new-drawer";
 import { Web3Utility } from "./components/Web3Utility";
 window.Buffer = Buffer;
 window.Buffer = Buffer;
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "new",
-        element: <NewContent />,
+        element: <NewDrawer />,
       },
     ],
   },
@@ -52,11 +52,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CryptoProvider>
-      <Web3Utility>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
-      </Web3Utility>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </CryptoProvider>
   </React.StrictMode>
 );

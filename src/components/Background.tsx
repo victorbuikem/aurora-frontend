@@ -7,7 +7,7 @@ import network from "../assets/network.png";
 
 export const Background = () => {
   return (
-    <div className="h-screen z-10 absolute w-full bg-blue-700">
+    <div className="h-[40vh] z-10 absolute w-full bg-blue-700">
       <img
         src={content}
         alt=""
@@ -32,7 +32,7 @@ export const Background = () => {
       <img
         src={live}
         alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 animate-bouncee hue-rotate-90 bottom-10 left-80"
+        className="absolute filter invert sepia saturate-200 opacity-50 animate-bouncee hue-rotate-90 bottom-10 left-[30rem]"
         width={100}
         height={100}
       />
@@ -61,7 +61,7 @@ export const Background = () => {
       <img
         src={creative}
         alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 bottom-10 right-10"
+        className="absolute filter invert sepia saturate-200 opacity-50 hue-rotate-90 bottom-10 right-80"
         width={100}
         height={100}
       />

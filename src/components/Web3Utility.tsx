@@ -22,24 +22,29 @@ function Web3Utility({ children }: { children: React.ReactNode }) {
   const platformContractAddress = import.meta.env
     .VITE_PLATFORM_CONTRACT_ADDRESS;
   const privateKey = import.meta.env.VITE_WALLET_KEY;
-  let account;
+  let account: string;
+  let auroraTokenContract;
+  let platformContract;
+
   if (web3) {
     account = web3.eth.accounts.wallet.add(privateKey);
+    auroraTokenContract = new web3.eth.Contract(
+      auroraTokenABI,
+      auroraTokenAddress
+    );
+    platformContract = new web3.eth.Contract(
+      platformContractABI,
+      platformContractAddress
+    );
   }
 
   //   // Instantiate contract objects
-  //   const auroraTokenContract = new web3.eth.Contract(
-  //     auroraTokenABI,
-  //     auroraTokenAddress
-  //   );
-  //   const platformContract = new web3.eth.Contract(
-  //     platformContractABI,
-  //     platformContractAddress
-  //   );
 
   // Add an account to the wallet
   async function approveTokens(spenderAddress: string, amount: number) {
+    console.log("earlier", auroraTokenContract);
     const tx = auroraTokenContract.methods.approve(spenderAddress, amount);
+    console.log("tx true or false", tx);
     const gas = await tx.estimateGas({ from: account.address });
     const gasPrice = await web3.eth.getGasPrice();
 

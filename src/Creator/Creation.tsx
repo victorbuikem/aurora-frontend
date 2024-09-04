@@ -46,7 +46,7 @@ export const Creation = () => {
         <p className="text-center text-sm my-2">
           about this creator who loves creating what you love
         </p>
-        <Categories />
+        <Categories creator />
       </div>
       <div className="max-h-[30rem] max-w-[40rem] w-[30%] absolute bottom-28 pb-10 left-[2rem] z-[100] ">
         <Outlet />

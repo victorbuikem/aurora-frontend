@@ -1,13 +1,13 @@
 import logo from "../assets/aurora.ico";
-import Background from "../components/background";
+import Background from "./Background";
 import { useNavigate } from "react-router";
-import Categories from "../Viewer/category";
-import { useCrypto } from "../providers/web-3-provider";
+import Categories from "../Viewer/Category";
+// import { useCrypto } from "../providers/web-3-provider";
 
 export function Carousel() {
   const navigate = useNavigate();
-  const { wallet } = useCrypto();
-  console.log("the new context ", wallet);
+  // const { wallet } = useCrypto();
+  // console.log("the new context ", wallet);
 
   const handleCreateNewClick = () => {
     navigate("/creator/join"); // Navigate to the "Create" scene

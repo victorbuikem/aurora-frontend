@@ -24,7 +24,7 @@ const categoryData: CategoryData = {
   Others: [others, others, video], // Include video in a category
 };
 
-const Categories = () => {
+const Categories = ({ creator }: { creator?: boolean }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("Arts");
   const navigate = useNavigate();
 
@@ -47,15 +47,16 @@ const Categories = () => {
       </div>
 
       <div>
-        <h2 className="text-2xl font-semibold mb-4 text-white">
+        {/* <h2 className="text-2xl font-semibold mb-4 text-black">
           {selectedCategory}
-        </h2>
+        </h2> */}
         <div className="flex flex-wrap -mx-2 w-full">
           {categoryData[selectedCategory]?.map((element, index: number) => (
             <div
               key={index}
               className="w-full border border-slate-200 bg-white rounded-2xl h-60 flex flex-col-reverse sm:w-1/2 md:w-1/3 lg:w-[30%] mx-2 overflow-hidden"
               onClick={() => {
+                if (creator) return;
                 navigate('/test_id')
               }}
             >

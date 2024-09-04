@@ -63,11 +63,28 @@ export function PaymentCard() {
 
             <button
                 disabled={test_balance < 1}
-                className='w-full my-5 px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'>
+                className='w-full my-5 px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer'>
                 Donate Now
             </button>
 
-            {test_balance < 1 ? <div>fcxp</div> : null}
+            {test_balance < 1 ? <div>
+                <p className="text-center text-lg text-orange-500 mt-5 mb-3">You need more tokens!</p>
+                <div className=" relative">
+                    
+                    <input type="number" className="block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 bg-transparent sm:text-sm sm:leading-6" placeholder="20.00" />
+                    <div className="pointer-events-none absolute top-1 right-0 flex items-center pr-3">
+                            <div className='flex items-center space-x-1'>
+                                <img src={logo} width={20} height={20} alt="" />
+                                <p>Aur</p>
+                            </div>
+                    </div>
+                <button
+                disabled={test_balance < 1}
+                className='w-full my-3 px-4 py-2 bg-black text-white rounded-lg shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer'>
+                Buy Now
+            </button>
+                </div>
+            </div> : null}
         </div>
     )
 }
