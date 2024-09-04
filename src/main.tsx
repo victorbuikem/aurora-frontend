@@ -13,6 +13,14 @@ import { CryptoProvider } from "./providers/web-3-provider";
 import CreatorID from "./Viewer/creator-id";
 import { VideoPlayer } from "./Viewer/video-player";
 window.Buffer = Buffer;
+import Creation from "./Creator/Creation";
+import { Buffer } from "buffer";
+import CreatorID from "./Viewer/CreatorID";
+import User from './Viewer/User';
+import { CryptoProvider } from "./providers/web-3-provider";
+window.Buffer = Buffer;
+
+import process from "process";
 window.process = process;
 const queryClient = new QueryClient();
 
@@ -21,12 +29,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <Carousel />,
   },
-
   {
     path: "/creator/join",
-    element: (
-      <Join />
-    ),
+    element: <Join />,
   },
 
   {
@@ -44,7 +49,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-
     path: "/",
     element: <CreatorID />,
   },
@@ -52,14 +56,16 @@ const router = createBrowserRouter([
     path: "/:id",
     element: <VideoPlayer />,
   },
+  {
+    path: "/user",
+    element: <User />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CryptoProvider>
-
       <QueryClientProvider client={queryClient}>
-
         <RouterProvider router={router} />
       </QueryClientProvider>
     </CryptoProvider>
