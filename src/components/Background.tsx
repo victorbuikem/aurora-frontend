@@ -47,7 +47,7 @@ export const Background = () => {
       <img
         src={live}
         alt=""
-        className="absolute filter invert sepia saturate-200 opacity-50 animate-bouncee hue-rotate-90 top-10 right-10"
+        className="absolute filter invert sepia saturate-200 opacity-50  animate-spiner hue-rotate-90 top-10 right-10"
         width={100}
         height={100}
       />
