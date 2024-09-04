@@ -7,10 +7,9 @@ import {
 import injectedModule from "@web3-onboard/injected-wallets";
 import {
   init,
-  useConnectWallet,
-  Web3OnboardProvider,
+  Web3OnboardProvider
 } from "@web3-onboard/react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
 import Web3 from "web3";
 
 export type CtxType = {
@@ -63,3 +62,4 @@ const useCrypto = () => {
 };
 
 export { CryptoProvider, useCrypto };
+

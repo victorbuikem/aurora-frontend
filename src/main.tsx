@@ -5,14 +5,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Carousel } from "./components/carousel";
+import { NewDrawer } from "./components/new-drawer";
 import Creation from "./Creator/Creation";
 import Join from "./Creator/Join";
 import "./index.css";
 import { CryptoProvider } from "./providers/web-3-provider";
-import User from "./Viewer/User";
+import User from "./Viewer/user";
 import { VideoPlayer } from "./Viewer/video-player";
-import { NewDrawer } from "./components/new-drawer";
-import { Web3Utility } from "./components/Web3Utility";
 window.Buffer = Buffer;
 window.Buffer = Buffer;
 
