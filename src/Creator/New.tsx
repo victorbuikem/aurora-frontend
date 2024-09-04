@@ -72,10 +72,10 @@ export const NewContent = () => {
         description: `Thank you for uploading`,
       });
     },
-    onError: async () => {
+    onError: async (err) => {
       return toast({
         variant: "destructive",
-        title: "Upload failed",
+        title: `${err.message}`,
         description: "Please Try Again or refresh the page",
       });
     },
@@ -86,7 +86,7 @@ export const NewContent = () => {
     event.preventDefault();
     SetClicked(true);
 
-    if (file && metadata) {
+    if (file && metadata.title && metadata.tag) {
       formData.append("file", file);
       const readyMetadata = JSON.stringify(metadata);
       formData.append("metadata", readyMetadata);
@@ -179,7 +179,7 @@ export const NewContent = () => {
             <option value="other">Other</option>
           </select>
         </div>
-        {(!file || !metadata) && clicked && (
+        {(!file || !metadata.tag || !metadata.title) && clicked && (
           <p className="text-red-500 text-[.75rem] mt-[-0.8rem] ml-[.7rem] font-semibold">
             No empty field!!
           </p>
