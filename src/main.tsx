@@ -10,7 +10,6 @@ import Join from "./Creator/join";
 import NewContent from "./Creator/new";
 import "./index.css";
 import { CryptoProvider } from "./providers/web-3-provider";
-import CreatorID from "./Viewer/creator-id";
 import User from './Viewer/User';
 import { VideoPlayer } from "./Viewer/video-player";
 window.Buffer = Buffer;
@@ -42,10 +41,6 @@ const router = createBrowserRouter([
         ),
       },
     ],
-  },
-  {
-    path: "/",
-    element: <CreatorID />,
   },
   {
     path: "/:id",
