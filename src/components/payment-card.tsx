@@ -9,7 +9,7 @@ export function PaymentCard() {
     const { wallet } = useCrypto()
     const [price, setPrice] = useState<string>("0")
 
-    let test_balance = 10;
+    let test_balance = 0;
     return (
         <div className="w-1/2 h-[480px] relative overflow-hidden p-4 bg-slate-200 shadow-md rounded-2xl">
             <div className="text-center p-4">
