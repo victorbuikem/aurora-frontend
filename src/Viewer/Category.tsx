@@ -24,7 +24,7 @@ const categoryData: CategoryData = {
   Others: [others, others, video], // Include video in a category
 };
 
-const Categories = () => {
+const Categories = ({ creator }: { creator?: boolean }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("Arts");
   const navigate = useNavigate();
 
@@ -56,6 +56,7 @@ const Categories = () => {
               key={index}
               className="w-full border border-slate-200 bg-white rounded-2xl h-60 flex flex-col-reverse sm:w-1/2 md:w-1/3 lg:w-[30%] mx-2 overflow-hidden"
               onClick={() => {
+                if (creator) return;
                 navigate('/test_id')
               }}
             >

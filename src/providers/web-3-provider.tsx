@@ -10,7 +10,7 @@ import injectedModule from "@web3-onboard/injected-wallets";
 import Web3 from "web3";
 
 type CtxType = {
-    wallet: WalletState | null;
+    wallet: string;
     connecting: boolean;
     disconnect: (wallet: DisconnectOptions) => Promise<WalletState[]>;
     connect: (opts?: ConnectOptions) => Promise<WalletState[]>;
@@ -46,23 +46,39 @@ init({
     ],
 });
 function CryptoProvider({ children }: { children: React.ReactNode }) {
-    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+    const [{ wallet: _wallet, connecting }, connect, disconnect] = useConnectWallet();
     const [web3, setWeb3] = useState<Web3 | null>(null);
+    const [wallet, setWallet] = useState<string>()
 
-    console.log(web3?.eth.getAccounts().then(() => console.log("nb")));
+
+    // useEffect(() => {
+    //     if (window.ethereum) {
+    //         window.ethereum.request({ method: 'eth_requestAccounts' })
+    //             .then(accounts => {
+    //                 // This returns an array of accounts, usually just one
+    //                 const connectedAccount = accounts[0];
+    //                 console.log("Connected Ethereum account:", connectedAccount);
+    //             })
+    //             .catch(error => {
+    //                 console.error("Error connecting to Ethereum wallet:", error);
+    //             });
+    //     } else {
+    //         console.error("MetaMask is not installed!");
+    //     }
+    // }, [])
+
     useEffect(() => {
-        if (wallet?.provider) {
-            const web3Instance = new Web3(wallet.provider);
+        if (_wallet?.provider) {
+            const web3Instance = new Web3(_wallet.provider);
             setWeb3(web3Instance);
-            console.log({ wallet, test: wallet.provider });
         } else {
             setWeb3(null);
         }
-    }, [wallet]);
+    }, [_wallet]);
 
     return (
         <CryptoContext.Provider
-            value={{ wallet, connecting, connect, disconnect, web3 }}
+            value={{ wallet: "", connecting, connect, disconnect, web3 }}
         >
             {children}
         </CryptoContext.Provider>

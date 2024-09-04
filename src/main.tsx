@@ -12,6 +12,7 @@ import "./index.css";
 import { CryptoProvider } from "./providers/web-3-provider";
 import User from './Viewer/User';
 import { VideoPlayer } from "./Viewer/video-player";
+import { NewDrawer } from "./components/new-drawer";
 window.Buffer = Buffer;
 window.Buffer = Buffer;
 
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "new",
         element: (
-          <NewContent />
+          <NewDrawer />
         ),
       },
     ],
