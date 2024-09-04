@@ -41,14 +41,14 @@ export function NewDrawer() {
         if (tagOptions.current != undefined) {
             const index = tagOptions.current.options.selectedIndex;
             const tag = tagOptions.current.options[index].value;
-            console.log("the tag is", tag);
+
             setMetaData({ ...metadata, tag: tag });
         }
     };
 
     const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         setMetaData({ ...metadata, title: event.target.value });
-        console.log(metadata);
+
     };
     const mutation = useMutation({
         mutationFn: async () => {
@@ -62,7 +62,6 @@ export function NewDrawer() {
                     pinata_secret_api_key: `${apiSecret}`,
                 },
             });
-            console.log("first", res);
             return res;
         },
         onSuccess: async () => {

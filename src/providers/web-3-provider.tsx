@@ -52,20 +52,7 @@ function CryptoProvider({ children }: { children: React.ReactNode }) {
 
 
     // useEffect(() => {
-    //     if (window.ethereum) {
-    //         window.ethereum.request({ method: 'eth_requestAccounts' })
-    //             .then(accounts => {
-    //                 // This returns an array of accounts, usually just one
-    //                 const connectedAccount = accounts[0];
-    //                 console.log("Connected Ethereum account:", connectedAccount);
-    //             })
-    //             .catch(error => {
-    //                 console.error("Error connecting to Ethereum wallet:", error);
-    //             });
-    //     } else {
-    //         console.error("MetaMask is not installed!");
-    //     }
-    // }, [])
+
 
     useEffect(() => {
         if (_wallet?.provider) {
