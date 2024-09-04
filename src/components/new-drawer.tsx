@@ -96,12 +96,12 @@ export function NewDrawer() {
     };
 
     return (
-        <div className="relative z-10">
+        <div className="relative z-10 ">
             <div
                 className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
             />
 
-            <div className="fixed inset-0 overflow-hidden">
+            <div className="fixed inset-0 overflow-hidden  slide-in">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                         <div
@@ -187,7 +187,7 @@ export function NewDrawer() {
 
                                             <textarea
                                                 id="description"
-                                                className="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                className="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
                                                 placeholder="e.g What is web 3 Lagos?"
                                                 onChange={handleTitleChange}
                                             ></textarea>
