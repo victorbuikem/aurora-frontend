@@ -25,7 +25,7 @@ const Join = () => {
           height={100}
           className="bg-slate-900 rounded-full object-cover flex mx-auto"
         />
-        <ConnectBtn />
+        <ConnectBtn homePage />
       </section>
       <img
         src={content}
