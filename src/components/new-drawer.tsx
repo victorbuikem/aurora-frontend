@@ -234,6 +234,7 @@ export function NewDrawer() {
                                             </button>
                                         </div>
                                     </form>
+                                    <Toaster />
                                 </div>
                             </div>
                         </div>

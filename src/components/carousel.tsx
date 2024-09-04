@@ -1,5 +1,5 @@
 import logo from '../assets/aurora.ico';
-import Background from '../components/background';
+import Background from './background';
 import { useNavigate } from 'react-router';
 import Categories from '../Viewer/category';
 

@@ -1,4 +1,3 @@
-import React from "react";
 import dummyData from "./Dummy.json";
 
 export default function Current() {

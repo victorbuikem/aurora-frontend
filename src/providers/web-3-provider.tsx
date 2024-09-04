@@ -19,7 +19,6 @@ type CtxType = {
 
 const CryptoContext = createContext<CtxType | undefined>(undefined);
 
-// TODO: This should be an environment variable - Chukwuma
 const API_KEY = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
 const INFURA_KEY = "c8412280cee6482d900de9bea48cb8c9";
 const RPC_URL = `https://mainnet.infura.io/v3/${INFURA_KEY}`;
