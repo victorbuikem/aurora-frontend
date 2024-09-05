@@ -46,6 +46,7 @@ export async function donate(
 
     console.log(
       "Donation transaction successful with hash:",
+      fromAddress,
       receipt.transactionHash
     );
   } catch (error) {

@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router";
-import { donate } from "../lib/requests";
 import { useConnectWallet } from "@web3-onboard/react";
+import { useNavigate } from "react-router";
 
 export function ConnectBtn({ homePage }: { homePage?: boolean }) {
   const [{ connecting }, connect] = useConnectWallet();
@@ -9,7 +8,6 @@ export function ConnectBtn({ homePage }: { homePage?: boolean }) {
   return (
     <button
       onClick={async () => {
-        // approveTokens("0x8e48c90492bDdfb01c52745A5991939747aa0c95", 2.0);
         if (!homePage) return;
         await connect();
         navigate("/creator/new", { replace: true });

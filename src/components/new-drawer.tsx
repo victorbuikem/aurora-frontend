@@ -24,7 +24,6 @@ export function NewDrawer() {
   const [clicked, SetClicked] = useState<boolean>(false);
   //   const { web3 } = useCrypto();
   const { toast } = useToast();
-  //   const { approveTokens } = useWebUtility();
 
   const formData = new FormData();
   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
