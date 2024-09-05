@@ -2,7 +2,7 @@ import { useConnectWallet } from "@web3-onboard/react";
 import { useNavigate } from "react-router";
 
 export function ConnectBtn({ homePage }: { homePage?: boolean }) {
-  const [{ connecting }, connect] = useConnectWallet();
+  const [{ }, connect] = useConnectWallet();
   const navigate = useNavigate();
 
   return (

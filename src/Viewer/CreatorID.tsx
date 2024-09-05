@@ -1,6 +1,6 @@
 import logo from "../assets/aurora.ico";
 import Background from "../components/Background";
-import Categories from "./Category";
+import Categories from "./category";
 import { useNavigate } from "react-router";
 export const CreatorID = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Categories from "../Viewer/category";
 import logo from "../assets/aurora.ico";
-import Background from "../components/background";
+import Background from "../components/Background";
 import { Outlet } from "react-router";
 
 export const Creation = () => {
